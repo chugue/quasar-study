@@ -6,13 +6,11 @@
           <q-img src="/src/assets/avatar.png"> </q-img>
         </q-avatar>
       </div>
-      <div class="col-smgrow column justify-between">
-        <div class="row items-center">
+      <div class="col-sm-grow column justify-between">
+        <div class="row justify-between">
           <span class="text-h6 text-weight-bold">chugue85@gmail.com</span>
           <q-space />
           <div class="q-gutter-x-sm">
-            <q-btn outline color="secondary" label="프로필 편집1" />
-            <q-btn outline color="secondary" label="프로필 편집2" />
             <q-btn outline color="secondary" label="프로필 편집3" />
             <q-btn flat color="secondary" icon="more_horiz" />
           </div>

@@ -8,7 +8,7 @@
           round
           icon="menu"
           aria-label="Menu"
-          @click="toggleLeftDrawwer"
+          @click="toggleLeftDrawer"
         />
 
         <q-toolbar-title> Quasar App </q-toolbar-title>
@@ -95,12 +95,12 @@ const linksList = [
     icon: 'school',
     to: '/flex-grid-1',
   },
-  // {
-  //   title: 'Profile Page',
-  //   caption: 'quasar.dev',
-  //   icon: 'school',
-  //   to: '/profile',
-  // },
+  {
+    title: 'Profile Page',
+    caption: 'quasar.dev',
+    icon: 'school',
+    to: '/profile',
+  },
   {
     title: 'Form Handling',
     caption: 'quasar.dev',

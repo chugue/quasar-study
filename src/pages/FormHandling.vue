@@ -3,11 +3,18 @@
     <section class="q-mb-xl">
       <div class="text-h4">QForm Components</div>
       <q-separator class="q-my-md" />
-      <q-form ref="myform" class="q-gutter-y-md q-mt-lg" autofocus greedy>
+      <q-form
+        ref="myform"
+        class="q-gutter-y-md q-mt-lg"
+        autofocus
+        greedy
+        @submit="onSubmit"
+        @reset="onReset"
+      >
         <q-input
           outlined
           v-model="form.title"
-          label="재목"
+          label="제목"
           :rules="[val => !!val || '필수 항목입니다.']"
         />
         <q-input
@@ -61,26 +68,10 @@
         <!-- false-value="Disagreed"
           true-value="Agreed" -->
         <div class="q-gutter-x-sm">
-          <q-btn
-            label="validate"
-            type="submit"
-            color="secondary"
-            @click="validate"
-          />
-          <q-btn
-            label="resetValidation"
-            type="submit"
-            color="warning"
-            @click="reset"
-          />
+          <q-btn label="validate" color="secondary" @click="validate" />
+          <q-btn label="resetValidation" color="warning" @click="reset" />
           <q-btn label="Submit" type="submit" color="primary" />
-          <q-btn
-            label="Reset"
-            type="submit"
-            color="primary"
-            flat
-            class="q-ml-sm"
-          />
+          <q-btn label="Reset" type="reset" color="primary" flat />
         </div>
       </q-form>
     </section>
@@ -88,7 +79,6 @@
 </template>
 
 <script setup>
-import { date } from 'quasar';
 import { ref } from 'vue';
 
 const myform = ref(null);
@@ -121,6 +111,22 @@ const validate = () => {
 
 const reset = () => {
   myform.value.resetValidation();
+};
+
+const onSubmit = () => {
+  if (form.value.accept !== true) {
+    alert('동의 해야 합니다.');
+  } else {
+    alert('성공 입니다.');
+  }
+};
+
+const onReset = () => {
+  form.value.title = '';
+  form.value.content = '';
+  form.value.tags = [];
+  form.value.date = '2022/01/01';
+  form.value.accept = false;
 };
 </script>
 
