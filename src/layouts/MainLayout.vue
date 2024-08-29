@@ -55,6 +55,12 @@ const linksList = [
     icon: 'school',
     to: '/spacing',
   },
+  {
+    title: 'Breakpoints',
+    caption: 'quasar.dev',
+    icon: 'school',
+    to: '/breakpoints',
+  },
 ];
 </script>
 
@@ -63,7 +69,6 @@ import { ref } from 'vue';
 import EssentialLink from 'components/EssentialLink.vue';
 
 const leftDrawerOpen = ref(false);
-const essentialLinks = linksList;
 
-const toggleLeftDrawwer = () => (leftDrawerOpen.value = !leftDrawerOpen.value);
+const toggleLeftDrawer = () => (leftDrawerOpen.value = !leftDrawerOpen.value);
 </script>
