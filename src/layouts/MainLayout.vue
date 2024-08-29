@@ -8,19 +8,30 @@
           round
           icon="menu"
           aria-label="Menu"
-          @click="toggleLeftDrawer"
+          @click="toggleLeftDrawwer"
         />
 
         <q-toolbar-title> Quasar App </q-toolbar-title>
 
-        <div>Quasar v{{ $q.version }}</div>
+        <q-btn stretch flat label="Sub Layout" to="/sub"></q-btn>
+        <q-btn flat round dense :icon="darkModeIcon" @click="toggleDarkMode" />
+
+        <q-btn round size="sm" class="q-ml-md" to="/profile">
+          <q-avatar size="42px">
+            <img src="/src/assets/avatar.png" />
+          </q-avatar>
+        </q-btn>
       </q-toolbar>
     </q-header>
 
     <q-drawer v-model="leftDrawerOpen" show-if-above bordered>
       <q-list>
-        <q-item-label header> Essential Links </q-item-label>
-
+        <q-item-label header>
+          <q-avatar size="lg" class="q-mr-sm">
+            <img src="https://cdn.quasar.dev/img/avatar.png" />
+          </q-avatar>
+          <span> Quasar v{{ $q.version }} </span>
+        </q-item-label>
         <EssentialLink
           v-for="link in linksList"
           :key="link.title"
@@ -55,15 +66,44 @@ const linksList = [
     icon: 'school',
     to: '/spacing',
   },
+  {
+    title: 'Classes & Variables',
+    caption: 'quasar.dev',
+    icon: 'school',
+    to: '/classes-variables',
+  },
+  {
+    title: 'Flex grid 1',
+    caption: 'quasar.dev',
+    icon: 'school',
+    to: '/flex-grid-1',
+  },
+  // {
+  //   title: 'Profile Page',
+  //   caption: 'quasar.dev',
+  //   icon: 'school',
+  //   to: '/profile',
+  // },
 ];
 </script>
 
 <script setup>
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 import EssentialLink from 'components/EssentialLink.vue';
+import { useQuasar } from 'quasar';
+
+const $q = useQuasar();
 
 const leftDrawerOpen = ref(false);
-const essentialLinks = linksList;
 
 const toggleLeftDrawwer = () => (leftDrawerOpen.value = !leftDrawerOpen.value);
+const darkModeIcon = computed(() =>
+  $q.dark.isActive ? 'dark_mode' : 'light_mode',
+);
+const init = () => {};
+init();
+const toggleDarkMode = () => {
+  $q.dark.toggle();
+  $q.localStorage.set('darkMode', $q.dark.isActive);
+};
 </script>
